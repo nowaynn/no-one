@@ -14,37 +14,43 @@ function generateDataCard() {
     const expiryHijri = HijriDate.addYear(1).format('iYYYY-iMM-iDD');
     const expiryGregorian = moment().add(1, 'year').format('YYYY-MM-DD');
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const dataCard = `
-            <div class="dataCard">
-                <img src="${e.target.result}" alt="Picture">
-                <p>Municipality (الأمانة): ${municipality1}</p>
-                <p>Municipality (البلدية): ${municipality2}</p>
-                <p>Name (الاسم): ${name}</p>
-                <p>ID Number (رقم الهوية): ${idNumber}</p>
-                <p>Gender (الجنس): ${gender}</p>
-                <p>Nationality (الجنسية): ${nationality}</p>
-                <p>Card Number (رقم الشهادة الصحية): ${cardNumber}</p>
-                <p>Department (المهنة): ${department}</p>
-                <p>Issue Date (Hijri) (تاريخ إصدار الشهادة الصحية هجري): ${todayHijri}</p>
-                <p>Issue Date (Gregorian) (تاريخ إصدار الشهادة الصحية ميلادي): ${todayGregorian}</p>
-                <p>Expiry Date (Hijri) (تاريخ نهاية الشهادة الصحية هجري): ${expiryHijri}</p>
-                <p>Expiry Date (Gregorian) (تاريخ نهاية الشهادة الصحية ميلادي): ${expiryGregorian}</p>
-                <button onclick="exportToPDF(this.parentElement)">Export to PDF</button>
-                <button onclick="downloadPicture('${e.target.result}')">Download Picture</button>
-            </div>
-        `;
+    if (picture) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const dataCard = `
+                <div class="dataCard">
+                    <img src="${e.target.result}" alt="Picture">
+                    <p>Municipality (الأمانة): ${municipality1}</p>
+                    <p>Municipality (البلدية): ${municipality2}</p>
+                    <p>Name (الاسم): ${name}</p>
+                    <p>ID Number (رقم الهوية): ${idNumber}</p>
+                    <p>Gender (الجنس): ${gender}</p>
+                    <p>Nationality (الجنسية): ${nationality}</p>
+                    <p>Card Number (رقم الشهادة الصحية): ${cardNumber}</p>
+                    <p>Department (المهنة): ${department}</p>
+                    <p>Issue Date (Hijri) (تاريخ إصدار الشهادة الصحية هجري): ${todayHijri}</p>
+                    <p>Issue Date (Gregorian) (تاريخ إصدار الشهادة الصحية ميلادي): ${todayGregorian}</p>
+                    <p>Expiry Date (Hijri) (تاريخ نهاية الشهادة الصحية هجري): ${expiryHijri}</p>
+                    <p>Expiry Date (Gregorian) (تاريخ نهاية الشهادة الصحية ميلادي): ${expiryGregorian}</p>
+                    <div class="btn-group">
+                        <button class="btn export-btn" onclick="exportToPDF(this.parentElement)">Export to PDF</button>
+                        <button class="btn download-btn" onclick="downloadPicture('${e.target.result}')">Download Picture</button>
+                    </div>
+                </div>
+            `;
 
-        const dataCards = document.getElementById('dataCards');
-        dataCards.innerHTML += dataCard;
+            const dataCards = document.getElementById('dataCards');
+            dataCards.innerHTML += dataCard;
 
-        saveDataToExcel({
-            municipality1, municipality2, name, idNumber, gender, nationality,
-            cardNumber, department, todayHijri, todayGregorian, expiryHijri, expiryGregorian, picture: e.target.result
-        });
-    };
-    reader.readAsDataURL(picture);
+            saveDataToExcel({
+                municipality1, municipality2, name, idNumber, gender, nationality,
+                cardNumber, department, todayHijri, todayGregorian, expiryHijri, expiryGregorian, picture: e.target.result
+            });
+        };
+        reader.readAsDataURL(picture);
+    } else {
+        alert('Please upload a picture.');
+    }
 }
 
 document.getElementById('search').addEventListener('input', function () {
