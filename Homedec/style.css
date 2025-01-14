@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
     margin: 0;
 }
 
@@ -28,9 +28,11 @@ form input {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-button {
+button.btn {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #007BFF;
@@ -38,9 +40,10 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
+button.btn:hover {
     background-color: #0056b3;
 }
 
@@ -54,12 +57,16 @@ button:hover {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 10px;
+    position: relative;
+    background-color: #f9f9f9;
 }
 
-#search {
+.search-bar {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .dataCard img {
@@ -68,6 +75,27 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#dataCards button {
+.dataCard button {
     margin-top: 10px;
+}
+
+.dataCard .btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button.download-btn {
+    background-color: #28a745;
+}
+
+button.download-btn:hover {
+    background-color: #218838;
+}
+
+button.export-btn {
+    background-color: #dc3545;
+}
+
+button.export-btn:hover {
+    background-color: #c82333;
 }
