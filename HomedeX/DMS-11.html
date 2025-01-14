@@ -3,62 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ID Card Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Health Certificate Database</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hijri-date/lib/index.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>ID Card Generator</h1>
+        <h1>Health Certificate Database</h1>
         <form id="entryForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <label for="address">Address:</label>
-            <input type="text" id="address" required>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" required>
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" required>
-            <label for="position">Position:</label>
-            <input type="text" id="position" required>
-            <label for="department">Department:</label>
-            <input type="text" id="department" required>
-            <label for="company">Company:</label>
-            <input type="text" id="company" required>
-            <label for="employeeId">Employee ID:</label>
-            <input type="text" id="employeeId" required>
-            <label for="nationality">Nationality:</label>
-            <input type="text" id="nationality" required>
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" required>
-            <label for="bloodGroup">Blood Group:</label>
-            <input type="text" id="bloodGroup" required>
-            <label for="emergencyContact">Emergency Contact:</label>
-            <input type="tel" id="emergencyContact" required>
-            <label for="joiningDate">Joining Date:</label>
-            <input type="date" id="joiningDate" required>
-            <label for="designation">Designation:</label>
-            <input type="text" id="designation" required>
-            <label for="experience">Experience:</label>
-            <input type="text" id="experience" required>
-            <label for="qualification">Qualification:</label>
-            <input type="text" id="qualification" required>
-            <label for="photo">Photo:</label>
-            <input type="file" id="photo" accept="image/*" required>
-            <label for="signature">Signature:</label>
-            <input type="file" id="signature" accept="image/*" required>
-            <label for="hobby">Hobby:</label>
-            <input type="text" id="hobby" required>
-            <button type="submit">Generate ID</button>
+            <label for="municipality1">Municipality Name (الأمانة):</label>
+            <input type="text" id="municipality1" name="municipality1">
+            <label for="municipality2">Municipality Name (البلدية):</label>
+            <input type="text" id="municipality2" name="municipality2">
+            <label for="name">Person Name (الاسم):</label>
+            <input type="text" id="name" name="name">
+            <label for="idNumber">ID Number (رقم الهوية):</label>
+            <input type="text" id="idNumber" name="idNumber">
+            <label for="gender">Gender (الجنس):</label>
+            <input type="text" id="gender" name="gender">
+            <label for="nationality">Nationality (الجنسية):</label>
+            <input type="text" id="nationality" name="nationality">
+            <label for="cardNumber">Card Number (رقم الشهادة الصحية):</label>
+            <input type="text" id="cardNumber" name="cardNumber">
+            <label for="department">Department (المهنة):</label>
+            <input type="text" id="department" name="department">
+            <button type="button" onclick="generateDataCard()">Generate Data Card</button>
         </form>
-        <div id="idCardContainer"></div>
-        <div class="search">
-            <h2>Search Data</h2>
-            <input type="text" id="searchInput" placeholder="Search by name">
-            <button onclick="searchData()">Search</button>
-            <div id="searchResults"></div>
-        </div>
+        <input type="text" id="search" placeholder="Search...">
+        <div id="dataCards"></div>
     </div>
     <script src="script.js"></script>
 </body>
