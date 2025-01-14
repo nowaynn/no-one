@@ -32,6 +32,12 @@
             <input type="text" id="department" name="department" required>
             <label for="picture">Upload Picture:</label>
             <input type="file" id="picture" name="picture" accept="image/*" required>
-            <button type="button" onclick="generateDataCard()">Generate Data Card</button>
+            <button type="button" class="btn" onclick="generateDataCard()">Generate Data Card</button>
         </form>
-        <input type="text" id="search" placeholder="Search...">
+        <input type="text" id="search" class="search-bar" placeholder="Search...">
+        <button class="btn" onclick="exportToExcel()">Export to Excel</button>
+        <div id="dataCards"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
