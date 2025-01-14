@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Certificate Database</title>
-    <link rel="stylesheet" href="https://nowaynn.github.io/no-one/Homedec/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hijri-date/lib/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -29,11 +30,8 @@
             <input type="text" id="cardNumber" name="cardNumber" required>
             <label for="department">Department (المهنة):</label>
             <input type="text" id="department" name="department" required>
+            <label for="picture">Upload Picture:</label>
+            <input type="file" id="picture" name="picture" accept="image/*" required>
             <button type="button" onclick="generateDataCard()">Generate Data Card</button>
         </form>
         <input type="text" id="search" placeholder="Search...">
-        <div id="dataCards"></div>
-    </div>
-    <script src="https://nowaynn.github.io/no-one/Homedec/script.js"></script>
-</body>
-</html>
