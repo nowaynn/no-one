@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Certificate Database</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hijri-date/lib/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Health Certificate Database</h1>
+        <form id="entryForm">
+            <label for="municipality1">Municipality Name (الأمانة):</label>
+            <input type="text" id="municipality1" name="municipality1" required>
+            <label for="municipality2">Municipality Name (البلدية):</label>
+            <input type="text" id="municipality2" name="municipality2" required>
+            <label for="name">Person Name (الاسم):</label>
+            <input type="text" id="name" name="name" required>
+            <label for="idNumber">ID Number (رقم الهوية):</label>
+            <input type="text" id="idNumber" name="idNumber" required>
+            <label for="gender">Gender (الجنس):</label>
+            <input type="text" id="gender" name="gender" required>
+            <label for="nationality">Nationality (الجنسية):</label>
+            <input type="text" id="nationality" name="nationality" required>
+            <label for="cardNumber">Card Number (رقم الشهادة الصحية):</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+            <label for="department">Department (المهنة):</label>
+            <input type="text" id="department" name="department" required>
+            <button type="button" onclick="generateDataCard()">Generate Data Card</button>
+        </form>
+        <input type="text" id="search" placeholder="Search...">
+        <div id="dataCards"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
