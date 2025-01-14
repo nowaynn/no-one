@@ -1,77 +1,63 @@
-document.getElementById('entryForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const idCard = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        address: document.getElementById('address').value,
-        phone: document.getElementById('phone').value,
-        dob: document.getElementById('dob').value,
-        position: document.getElementById('position').value,
-        department: document.getElementById('department').value,
-        company: document.getElementById('company').value,
-        employeeId: document.getElementById('employeeId').value,
-        nationality: document.getElementById('nationality').value,
-        gender: document.getElementById('gender').value,
-        bloodGroup: document.getElementById('bloodGroup').value,
-        emergencyContact: document.getElementById('emergencyContact').value,
-        joiningDate: document.getElementById('joiningDate').value,
-        designation: document.getElementById('designation').value,
-        experience: document.getElementById('experience').value,
-        qualification: document.getElementById('qualification').value,
-        photo: '',
-        signature: '',
-        hobby: document.getElementById('hobby').value
-        // Add more fields as needed
-    };
-
-    const photo = document.getElementById('photo').files[0];
-    const signature = document.getElementById('signature').files[0];
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        idCard.photo = e.target.result;
-        const signatureReader = new FileReader();
-        signatureReader.onload = function(e) {
-            idCard.signature = e.target.result;
-            saveData(idCard);
-            displayIDCard(idCard);
-        };
-        if (signature) {
-            signatureReader.readAsDataURL(signature);
-        }
-    };
-    if (photo) {
-        reader.readAsDataURL(photo);
-    }
-});
-
-function saveData(data) {
-    let dataList = JSON.parse(localStorage.getItem('dataList')) || [];
-    dataList.push(data);
-    localStorage.setItem('dataList', JSON.stringify(dataList));
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
 }
 
-function displayIDCard(data) {
-    const container = document.getElementById('idCardContainer');
-    container.innerHTML = `
-        <div id="idCard">
-            <img src="${data.photo}" alt="${data.name}">
-            <div>
-                <p><strong>Name:</strong> ${data.name}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Address:</strong> ${data.address}</p>
-                <p><strong>Phone:</strong> ${data.phone}</p>
-                <p><strong>Date of Birth:</strong> ${data.dob}</p>
-                <p><strong>Position:</strong> ${data.position}</p>
-                <p><strong>Department:</strong> ${data.department}</p>
-                <p><strong>Company:</strong> ${data.company}</p>
-                <p><strong>Employee ID:</strong> ${data.employeeId}</p>
-                <p><strong>Nationality:</strong> ${data.nationality}</p>
-                <p><strong>Gender:</strong> ${data.gender}</p>
-                <p><strong>Blood Group:</strong> ${data.bloodGroup}</p>
-                <p><strong>Emergency Contact:</strong> ${data.emergencyContact}</p>
-                <p><strong>Joining Date:</strong> ${data.joiningDate}</p>
-                <p><strong>Designation:</strong> ${data.designation}</p>
-                <p><strong>Experience:</strong> ${data.experience}</p>
-                <p><strong>Qualification:</strong> ${data.qualification}</
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#dataCards {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.dataCard {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+}
